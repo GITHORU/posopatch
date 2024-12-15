@@ -22,7 +22,7 @@
 <div id="content" class="container">
   <img src="./IMG/logo_tabforlib_alpha.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;">
   <h1>Convertisseur</h1>
-  <p>Convertissez votre consommation quotidienne en une posologie de patch adaptée.</p>
+  <p>Convertissez votre consommation quotidienne de tabac en une posologie de patch adaptée.</p>
   <input type="number" id="cigarettes_manufacturees" placeholder="Nombre de cigarettes manufacturées par jour" min="0">
   <input type="number" id="cigarettes_roulees" placeholder="Nombre de cigarettes roulées par jour" min="0">
   <input type="number" id="cigares_cigarillos" placeholder="Nombre de cigares/cigarillos par jour" min="0">
@@ -34,8 +34,11 @@
   </select>
   <p><br/></p>
   <button onclick="convertir()">Convertir</button>
-  <div class="result" id="resultat"></div>
-  <p><strong>⚠ Rappel : Dans tous les cas, associer avec des formes orales de substituts nicotiniques ⚠</strong></p>
+  <div class="result" id="resultat" style="background:#abe1e1;
+     border-top:2px solid #225e5e;
+     border-bottom:2px solid #225e5e;
+     padding:20px;"></div>
+  <p  ><strong>⚠ Rappel : Dans tous les cas, associer avec des formes orales de substituts nicotiniques ⚠</strong></p>
   <p>Contrôler 24 heures après la mise en place du traitement les <strong>signes de sous-dosage</strong> (les plus fréquents : fortes envies de fumer persistantes, irritabilité) ou les <strong>signes de surdosage</strong> (rares : nausées, céphalées) et augmenter ou diminuer les doses de patchs de 7 mg/24h</p>
   <img src="./IMG/qrcode.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;">
 </div>
