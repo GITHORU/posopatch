@@ -35,6 +35,8 @@
   <p><br/></p>
   <button onclick="convertir()">Convertir</button>
   <div class="result" id="resultat"></div>
+  <p><strong>⚠ Rappel : Dans tous les cas, associer avec des formes orales de substituts nicotiniques ⚠</strong></p>
+  <p>Contrôler 24 heures après la mise en place deu raitelent les <strong>signes de sous-dosage</strong> (les plus fréquents : fortes envies de fumer persistantes, irritabilité) ou les <strong>signes de surdosage</strong> (rares : nausées, céphalées) et augmenter ou diinuer les doses de patchs de 7 mg/24h</p>
   <img src="./IMG/qrcode.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;">
 </div>
 
@@ -103,7 +105,7 @@
       }
     }
 
-    resultatDiv.innerHTML = `Posologie recommandée :<br/><strong>${dosage}</strong><br/>(équivalent à ${totalCigarettes.toFixed(1)} cigarettes manufacturées)`;
+    resultatDiv.innerHTML = `Equivalent à ${parseInt(totalCigarettes)} cigarettes manufacturées<br/><br/>Posologie recommandée :<br/><strong>${dosage}</strong>`;
   }
 </script>
 </body>
