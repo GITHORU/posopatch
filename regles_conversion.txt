@@ -1,0 +1,28 @@
+    if (totalCigarettes < 10) {
+      if (delai_reveil == 1) {
+        dosage = "Formes orales";
+      } else {
+        dosage = "14 mg/24h + comprimés";
+      }
+    }
+    if (totalCigarettes >= 10 && totalCigarettes < 20) {
+      if (delai_reveil == 1) {
+        dosage = "14 mg/24h + comprimés";
+      } else {
+        dosage = "21 mg/24h + comprimés";
+      }
+    }
+    if (totalCigarettes >= 20 && totalCigarettes < 30) {
+      if (delai_reveil == 1) {
+        dosage = "21 mg/24h + comprimés";
+      } else {
+        dosage = "2 x 14mg/24h en même temps + comprimés";
+      }
+    }
+    if (totalCigarettes >= 30) {
+      if (delai_reveil == 1 || delai_reveil == 2) {
+        dosage = "21 mg/24h + 14 mg/24h en même temps + comprimés";
+      } else {
+        dosage = "2 x 21 mg/24h en même temps + comprimés";
+      }
+    }

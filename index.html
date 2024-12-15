@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PosoPatch - Convertisseur</title>
+  <link rel="icon" href="./IMG/logo_tabforlib_alpha.png" type="image/jpeg">
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+<div id="menu-lateral" class="menu-lateral">
+  <ul>
+    <li><a href="#">Convertisseur</a></li>
+    <li><a href="#">Documentation</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<span class="openbtn" onclick="toggleMenu()">☰ Menu</span>
+
+<div id="content" class="container">
+  <img src="./IMG/logo_tabforlib_alpha.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;">
+  <h1>Convertisseur</h1>
+  <p>Convertissez votre consommation quotidienne en une posologie de patch adaptée.</p>
+  <input type="number" id="cigarettes_manufacturees" placeholder="Nombre de cigarettes manufacturées par jour" min="0">
+  <input type="number" id="cigarettes_roulees" placeholder="Nombre de cigarettes roulées par jour" min="0">
+  <input type="number" id="cigares_cigarillos" placeholder="Nombre de cigares/cigarillos par jour" min="0">
+  <p class="select-indication">Délai entre le réveil et votre première consommation de tabac.</p>
+  <select id="delai_reveil">
+    <option value="1">Plus d'1h</option>
+    <option value="2">De 30 min à 1h</option>
+    <option value="3">Inférieur à 30 min</option>
+  </select>
+  <p><br/></p>
+  <button onclick="convertir()">Convertir</button>
+  <div class="result" id="resultat"></div>
+</div>
+
+<script>
+
+  function toggleMenu() {
+    var menu = document.getElementById("menu-lateral");
+    var content = document.getElementById("content");
+
+    // Si le menu est caché, on l'ouvre et on déplace le contenu
+    if (menu.style.left === "-20vw" || menu.style.left === "") {
+      menu.style.left = "0";
+      content.style.marginLeft = "20vw";
+    }
+    // Sinon, on le ferme et on remet le contenu à sa position initiale
+    else {
+      menu.style.left = "-20vw";
+      content.style.marginLeft = "0";
+    }
+  }
+
+  function convertir() {
+    const cigarettesManufacturees = parseInt(document.getElementById('cigarettes_manufacturees').value) || 0;
+    const cigarettesRoulees = parseInt(document.getElementById('cigarettes_roulees').value) || 0;
+    const cigaresCigarillos = parseInt(document.getElementById('cigares_cigarillos').value) || 0;
+    const resultatDiv = document.getElementById('resultat');
+
+    if (cigarettesManufacturees <= 0 && cigarettesRoulees <= 0 && cigaresCigarillos <= 0) {
+      resultatDiv.innerHTML = "Veuillez entrer au moins une consommation valide.";
+      return;
+    }
+
+    // Conversion des cigares/cigarillos et des cigarettes roulées en équivalent cigarettes manufacturées (valeurs approximatives)
+    const totalCigarettes = cigarettesManufacturees + (cigarettesRoulees * 2) + (cigaresCigarillos * 4);
+    const delai_reveil = parseInt(document.getElementById('delai_reveil').value);
+
+    let dosage;
+
+    // Règles de conversion pour la posologie en fonction du total de cigarettes
+    if (totalCigarettes < 10) {
+      if (delai_reveil == 1) {
+        dosage = "Formes orales";
+      } else {
+        dosage = "14 mg/24h + comprimés";
+      }
+    }
+    if (totalCigarettes >= 10 && totalCigarettes < 20) {
+      if (delai_reveil == 1) {
+        dosage = "14 mg/24h + comprimés";
+      } else {
+        dosage = "21 mg/24h + comprimés";
+      }
+    }
+    if (totalCigarettes >= 20 && totalCigarettes < 30) {
+      if (delai_reveil == 1) {
+        dosage = "21 mg/24h + comprimés";
+      } else {
+        dosage = "2 x 14mg/24h en même temps + comprimés";
+      }
+    }
+    if (totalCigarettes >= 30) {
+      if (delai_reveil == 1 || delai_reveil == 2) {
+        dosage = "21 mg/24h + 14 mg/24h en même temps + comprimés";
+      } else {
+        dosage = "2 x 21 mg/24h en même temps + comprimés";
+      }
+    }
+
+    resultatDiv.innerHTML = `Posologie recommandée :<br/><strong>${dosage}</strong><br/>(équivalent à ${totalCigarettes.toFixed(1)} cigarettes manufacturées)`;
+  }
+</script>
+</body>
+</html>
