@@ -78,6 +78,10 @@ p {
     /*font-size: 1em;*/
     margin-bottom: 20px;
 }
+.subtitle {
+    color: #2c7a7b;
+}
+
 input, select {
     width: 100%;
     padding: 10px;
@@ -89,8 +93,9 @@ input, select {
 select#delai_reveil {
     margin-bottom: 0;
 }
-.select-indication {
-    font-size: 0.9em;
+
+.select-val {
+    font-size: 1.2em;
     color: #555;
     margin-bottom: 10px;
 }
@@ -121,10 +126,9 @@ body {
 
 #menu-lateral {
     height: 100%;
-    width: 20vw;
     position: fixed;
     top: 0;
-    left: -20vw;  /* Le menu est caché par défaut */
+    left: -50vw;  /* Le menu est caché par défaut */
     background-color: #225e5e;
     overflow-x: hidden;
     transition: 0.3s;
@@ -155,7 +159,7 @@ body {
     color: white;
     border: none;
     padding: 10px;
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
 }

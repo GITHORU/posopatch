@@ -11,22 +11,26 @@
 
 <div id="menu-lateral" class="menu-lateral">
   <ul>
-    <li><a href="#">Convertisseur</a></li>
-    <li><a href="#">Documentation</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="./index.html">Convertisseur</a></li>
+    <li><a href="./index.html">Documentation</a></li>
+    <li><a href="./index.html">Contact</a></li>
   </ul>
 </div>
 
-<span class="openbtn" onclick="toggleMenu()">☰ Menu</span>
+<span class="openbtn" onclick="toggleMenu()">☰</span>
 
 <div id="content" class="container">
-  <img src="./IMG/logo_tabforlib_alpha.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;">
+  <a href="./"><img src="./IMG/logo_tabforlib_alpha.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;"></a>
   <h1>Convertisseur</h1>
-  <p>Convertissez votre consommation quotidienne de tabac en une posologie de patch adaptée.</p>
+  <p class="select-val">De quel dosage de patch ai-je besoin si je fume :</p>
+
   <input type="number" id="cigarettes_manufacturees" placeholder="Nombre de cigarettes manufacturées par jour" min="0">
-  <input type="number" id="cigarettes_roulees" placeholder="Nombre de cigarettes roulées par jour" min="0">
-  <input type="number" id="cigares_cigarillos" placeholder="Nombre de cigares/cigarillos par jour" min="0">
-  <p class="select-indication">Délai entre le réveil et votre première consommation de tabac.</p>
+  <input type="number" id="cigarettes_roulees" placeholder="Nombre de cigarettes roulées* par jour" min="0">
+  <input type="number" id="cigares_cigarillos" placeholder="Nombre de cigares/cigarillos** par jour" min="0">
+  <sub class="subtitle">* &nbsp;1 cigarette roulée  = 2 cigarettes manufacturées</sub>
+  <sub class="subtitle">** 1 cigare/cigarillos = 4 cigarettes manufacturées</sub>
+
+  <p class="select-val">Délai entre mon réveil et ma première consommation de tabac :</p>
   <select id="delai_reveil">
     <option value="1">Plus d'1h</option>
     <option value="2">De 30 min à 1h</option>
@@ -48,15 +52,15 @@
   function toggleMenu() {
     var menu = document.getElementById("menu-lateral");
     var content = document.getElementById("content");
-
+    console.log(menu.offsetWidth.toString()+"px")
     // Si le menu est caché, on l'ouvre et on déplace le contenu
-    if (menu.style.left === "-20vw" || menu.style.left === "") {
+    if (menu.style.left == (-menu.offsetWidth).toString()+"px" || menu.style.left === "") {
       menu.style.left = "0";
-      content.style.marginLeft = "20vw";
+      content.style.marginLeft = menu.offsetWidth.toString()+"px";
     }
     // Sinon, on le ferme et on remet le contenu à sa position initiale
     else {
-      menu.style.left = "-20vw";
+      menu.style.left = (-menu.offsetWidth).toString()+"px";
       content.style.marginLeft = "0";
     }
   }
@@ -83,28 +87,28 @@
       if (delai_reveil == 1) {
         dosage = "Formes orales";
       } else {
-        dosage = "14 mg/24h + comprimés";
+        dosage = "14 mg/24h + comprimés ou gommes";
       }
     }
     if (totalCigarettes >= 10 && totalCigarettes < 20) {
       if (delai_reveil == 1) {
-        dosage = "14 mg/24h + comprimés";
+        dosage = "14 mg/24h + comprimés ou gommes";
       } else {
-        dosage = "21 mg/24h + comprimés";
+        dosage = "21 mg/24h + comprimés ou gommes";
       }
     }
     if (totalCigarettes >= 20 && totalCigarettes < 30) {
       if (delai_reveil == 1) {
-        dosage = "21 mg/24h + comprimés";
+        dosage = "21 mg/24h + comprimés ou gommes";
       } else {
-        dosage = "2 x 14mg/24h en même temps + comprimés";
+        dosage = "2 x 14mg/24h en même temps + comprimés ou gommes";
       }
     }
     if (totalCigarettes >= 30) {
       if (delai_reveil == 1 || delai_reveil == 2) {
-        dosage = "21 mg/24h + 14 mg/24h en même temps + comprimés";
+        dosage = "21 mg/24h + 14 mg/24h en même temps + comprimés ou gommes";
       } else {
-        dosage = "2 x 21 mg/24h en même temps + comprimés";
+        dosage = "2 x 21 mg/24h en même temps + comprimés ou gommes";
       }
     }
 
