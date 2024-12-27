@@ -70,6 +70,8 @@ body {
     margin-top: 50px;
     transition: margin-left .3s;
 }
+
+
 h1 {
     font-size: 1.8em;
     color: #2c7a7b;
@@ -167,4 +169,8 @@ body {
 #content {
     margin-left: 0;
     padding: 20px;
+}
+
+.lien-externe {
+    text-align: left;
 }

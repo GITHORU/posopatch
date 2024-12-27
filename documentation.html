@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PosoPatch - Convertisseur</title>
+  <link rel="icon" href="./IMG/logo_tabforlib_alpha.png" type="image/jpeg">
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+<div id="menu-lateral" class="menu-lateral">
+  <ul>
+    <li><a href="./index.html">Convertisseur</a></li>
+    <li><a href="./documentation.html">Documentation</a></li>
+    <li><a href="./index.html">Contact</a></li>
+  </ul>
+</div>
+
+<span class="openbtn" onclick="toggleMenu()">☰</span>
+
+<div id="content" class="container">
+  <a href="./"><img src="./IMG/logo_tabforlib_alpha.png" alt="PosoPatch Logo" style="max-width: 200px; margin-bottom: 20px;"></a>
+  <h1>Documentation</h1>
+  <ul style="text-align: left;">
+    <li><a target=”_blank” class="lien-externe" href="https://www.hopitalarbresle.com/">Site de l'hôpital de l'arbresle</a></li>
+    <li><a target=”_blank” class="lien-externe" href="https://www.hopitalarbresle.com/">Site 2</a></li>
+    <li><a target=”_blank” class="lien-externe" href="https://www.hopitalarbresle.com/">Site 3</a></li>
+  </ul>
+
+</div>
+
+<script>
+
+  function toggleMenu() {
+    var menu = document.getElementById("menu-lateral");
+    var content = document.getElementById("content");
+    console.log(menu.offsetWidth.toString()+"px")
+    // Si le menu est caché, on l'ouvre et on déplace le contenu
+    if (menu.style.left == (-menu.offsetWidth).toString()+"px" || menu.style.left === "") {
+      menu.style.left = "0";
+      content.style.marginLeft = menu.offsetWidth.toString()+"px";
+    }
+    // Sinon, on le ferme et on remet le contenu à sa position initiale
+    else {
+      menu.style.left = (-menu.offsetWidth).toString()+"px";
+      content.style.marginLeft = "0";
+    }
+  }
+
+</script>
+</body>
+</html>
